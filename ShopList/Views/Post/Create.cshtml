@@ -1,0 +1,58 @@
+﻿@model ShopList.Models.CreatePostViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "Post", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Create Your Post</h4>
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.SelectedSubCatId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.SelectedSubCatId, Model.SubCats, new { htmlAttributes = new { @class = "form-control text-box single-line" } })
+                </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.SelectedLocId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.SelectedLocId, Model.Locs, new { htmlAttributes = new { @class = "form-control text-box single-line" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.PostName, htmlAttributes: new { @class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PostName, new { htmlAttributes = new { @class = "form-control"} })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.PostDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PostDescription, new { htmlAttributes = new { @class = "form-control"} })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", placeholder = "0.00" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.File, htmlAttributes: new { @class = "control-label col-md-2", placeholder = "your img filepath" })
+            <div class="col-md-10">
+                <input type="file" name="File" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+

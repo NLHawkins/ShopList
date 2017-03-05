@@ -1,0 +1,19 @@
+﻿
+@model ShopList.Models.Post
+
+<div class="container">
+
+    @using (Html.BeginForm())
+
+    {
+        <h2>Delete this Post?</h2>
+        <h3>@Model.Name</h3>
+        <p>Price: $@Model.Price</p>
+        <p>Location: @Model.Location.Locale</p>
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+
+</div>

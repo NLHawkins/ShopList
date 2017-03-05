@@ -1,0 +1,22 @@
+﻿@model ShopList.Models.HomeListViewModel
+@{
+    ViewBag.Title = "HomeList";
+}
+
+<div class="container">
+    @foreach (var item in Model.Cats)
+    {
+        <div class="col-sm-6 col-md-4">
+             <h3>@Html.ActionLink(item.CatTag,"Index","Category", new {loc_Id = ViewBag.loc_Id, viewOrder = "", cat_Id = item.Id}, new { })</h3>
+                    @foreach (var sc in Model.SubCats)
+                    {
+                        if (sc.CategoryId == item.Id)
+                        {
+                            <p>---@Html.ActionLink(sc.Title, "Index", "SubCat", new { loc_Id = ViewBag.loc_Id, viewOrder = "", subCat_Id = sc.Id }, new { })</p>
+                        }
+                    }
+
+        </div>
+    }
+</div>
+

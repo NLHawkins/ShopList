@@ -44,6 +44,34 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -178,14 +206,107 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\SubCatController.cs" />
+    <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703012218391_Initial.cs" />
+    <Compile Include="Migrations\201703012218391_Initial.Designer.cs">
+      <DependentUpon>201703012218391_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703012223537_PostImagesAndLabelsAddedInitial.cs" />
+    <Compile Include="Migrations\201703012223537_PostImagesAndLabelsAddedInitial.Designer.cs">
+      <DependentUpon>201703012223537_PostImagesAndLabelsAddedInitial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703021537126_CatAndLocAddedWMany2Many.cs" />
+    <Compile Include="Migrations\201703021537126_CatAndLocAddedWMany2Many.Designer.cs">
+      <DependentUpon>201703021537126_CatAndLocAddedWMany2Many.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703021816133_furthermodelconstruction.cs" />
+    <Compile Include="Migrations\201703021816133_furthermodelconstruction.Designer.cs">
+      <DependentUpon>201703021816133_furthermodelconstruction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703021818435_tagMany2Mny.cs" />
+    <Compile Include="Migrations\201703021818435_tagMany2Mny.Designer.cs">
+      <DependentUpon>201703021818435_tagMany2Mny.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703021823127_tagChk.cs" />
+    <Compile Include="Migrations\201703021823127_tagChk.Designer.cs">
+      <DependentUpon>201703021823127_tagChk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703021829249_M2M.cs" />
+    <Compile Include="Migrations\201703021829249_M2M.Designer.cs">
+      <DependentUpon>201703021829249_M2M.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703021835424_M2Mfixed.cs" />
+    <Compile Include="Migrations\201703021835424_M2Mfixed.Designer.cs">
+      <DependentUpon>201703021835424_M2Mfixed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703022103152_newwestModels.cs" />
+    <Compile Include="Migrations\201703022103152_newwestModels.Designer.cs">
+      <DependentUpon>201703022103152_newwestModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703022107158_stillMakeingit.cs" />
+    <Compile Include="Migrations\201703022107158_stillMakeingit.Designer.cs">
+      <DependentUpon>201703022107158_stillMakeingit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703022116451_owneriD.cs" />
+    <Compile Include="Migrations\201703022116451_owneriD.Designer.cs">
+      <DependentUpon>201703022116451_owneriD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703030130443_catIdtoPost.cs" />
+    <Compile Include="Migrations\201703030130443_catIdtoPost.Designer.cs">
+      <DependentUpon>201703030130443_catIdtoPost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703031545094_subcat.cs" />
+    <Compile Include="Migrations\201703031545094_subcat.Designer.cs">
+      <DependentUpon>201703031545094_subcat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703031855387_virtCattoSubCat.cs" />
+    <Compile Include="Migrations\201703031855387_virtCattoSubCat.Designer.cs">
+      <DependentUpon>201703031855387_virtCattoSubCat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703031901004_cat.cs" />
+    <Compile Include="Migrations\201703031901004_cat.Designer.cs">
+      <DependentUpon>201703031901004_cat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703031923468_subcatid.cs" />
+    <Compile Include="Migrations\201703031923468_subcatid.Designer.cs">
+      <DependentUpon>201703031923468_subcatid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703041818073_locIDtoPost.cs" />
+    <Compile Include="Migrations\201703041818073_locIDtoPost.Designer.cs">
+      <DependentUpon>201703041818073_locIDtoPost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703041820240_next.cs" />
+    <Compile Include="Migrations\201703041820240_next.Designer.cs">
+      <DependentUpon>201703041820240_next.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703041943296_chk.cs" />
+    <Compile Include="Migrations\201703041943296_chk.Designer.cs">
+      <DependentUpon>201703041943296_chk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703042002189_Fkanotations.cs" />
+    <Compile Include="Migrations\201703042002189_Fkanotations.Designer.cs">
+      <DependentUpon>201703042002189_Fkanotations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\HomeViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ImageUpload.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Location.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\PostViewModels.cs" />
+    <Compile Include="Models\SubCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -198,6 +319,9 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -221,8 +345,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -244,9 +366,18 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Post\Create.cshtml" />
+    <Content Include="Views\Post\Details.cshtml" />
+    <Content Include="Views\Location\Index.cshtml" />
+    <Content Include="Views\Post\Delete.cshtml" />
+    <Content Include="Views\SubCat\Index.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Home\HomeList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Uploads\" />
+    <Folder Include="Views\Upload\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -255,6 +386,68 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201703012218391_Initial.resx">
+      <DependentUpon>201703012218391_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703012223537_PostImagesAndLabelsAddedInitial.resx">
+      <DependentUpon>201703012223537_PostImagesAndLabelsAddedInitial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703021537126_CatAndLocAddedWMany2Many.resx">
+      <DependentUpon>201703021537126_CatAndLocAddedWMany2Many.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703021816133_furthermodelconstruction.resx">
+      <DependentUpon>201703021816133_furthermodelconstruction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703021818435_tagMany2Mny.resx">
+      <DependentUpon>201703021818435_tagMany2Mny.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703021823127_tagChk.resx">
+      <DependentUpon>201703021823127_tagChk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703021829249_M2M.resx">
+      <DependentUpon>201703021829249_M2M.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703021835424_M2Mfixed.resx">
+      <DependentUpon>201703021835424_M2Mfixed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703022103152_newwestModels.resx">
+      <DependentUpon>201703022103152_newwestModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703022107158_stillMakeingit.resx">
+      <DependentUpon>201703022107158_stillMakeingit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703022116451_owneriD.resx">
+      <DependentUpon>201703022116451_owneriD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703030130443_catIdtoPost.resx">
+      <DependentUpon>201703030130443_catIdtoPost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703031545094_subcat.resx">
+      <DependentUpon>201703031545094_subcat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703031855387_virtCattoSubCat.resx">
+      <DependentUpon>201703031855387_virtCattoSubCat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703031901004_cat.resx">
+      <DependentUpon>201703031901004_cat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703031923468_subcatid.resx">
+      <DependentUpon>201703031923468_subcatid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703041818073_locIDtoPost.resx">
+      <DependentUpon>201703041818073_locIDtoPost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703041820240_next.resx">
+      <DependentUpon>201703041820240_next.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703041943296_chk.resx">
+      <DependentUpon>201703041943296_chk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703042002189_Fkanotations.resx">
+      <DependentUpon>201703042002189_Fkanotations.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

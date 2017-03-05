@@ -1,0 +1,29 @@
+﻿@model ShopList.Models.Post
+
+
+<div class="container">
+    <div class="col-lg-8 text-center">
+        <h2>
+            @Model.Name - $@Model.Price - (@Model.Location.Locale)
+        </h2>
+    </div>
+        <div class="col-lg-8">
+            <img class="thumb" src="@Model.Image.FilePath" />
+        </div>
+    <div class="col-lg-8">
+        <h4>
+            @Model.Description
+        </h4>
+    </div>
+    <p>
+        @if (ViewBag.UserId == Model.Owner_Id)
+        {
+            @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
+        }
+        @Html.ActionLink("Back to List", "Index", new { subCat_Id = Model.SubCat_Id , viewOrder = ""})
+    </p> 
+    
+
+</div>
+
+

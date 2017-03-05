@@ -1,0 +1,17 @@
+﻿
+
+<div class="container">
+    @foreach (var item in ViewBag.Posts)
+    {
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src=@item.Image.FilePath>
+                <div class="caption">
+                    <h3>@item.Name</h3>
+                    <p>Price: $@item.Price</p>
+                    <p>Location: @item.Location.Locale</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
