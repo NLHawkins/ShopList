@@ -1,17 +1,133 @@
 ﻿
 
+<br/>
 <div class="container">
+    <div class="row">
+        <div class="col-lg-2 text-center">
+            <h4>Views:</h4>
+        </div>
+        <div class="col-lg-3">
+            <h4>
+                <span>
+                    @Html.ActionLink("List", "Index",
+                 new
+                 {
+                     loc_Id = ViewBag.Loc_Id,
+                     subCat_Id = ViewBag.SubCat_Id,
+                     viewOrder = ViewBag.ViewOrder,
+                     view = "list"
+                 })
+                </span> |
+                <span>
+                    @Html.ActionLink("Thumbnail", "Index",
+                 new
+                 {
+                     loc_Id = ViewBag.Loc_Id,
+                     subCat_Id = ViewBag.SubCat_Id,
+                     viewOrder = ViewBag.ViewOrder,
+                     view = "thumb"
+                 })
+                </span> |
+                <span>
+                    @Html.ActionLink("Gallery", "Index",
+                 new
+                 {
+                     loc_Id = ViewBag.Loc_Id,
+                     subCat_Id = ViewBag.SubCat_Id,
+                     viewOrder = ViewBag.ViewOrder,
+                     view = "gallery"
+                 })
+                </span>
+            </h4>
+        </div>
+        <div class="col-lg-2 text-center">
+            <h4>Order By:</h4>
+        </div>
+        <div class="col-lg-5">
+            <h4>
+                <span>
+                    @Html.ActionLink("Price (H)", "Index",
+                 new
+                 {
+                     loc_Id = ViewBag.Loc_Id,
+                     subCat_Id = ViewBag.SubCat_Id,
+                     viewOrder = "high",
+                     view = ViewBag.View
+                 })
+                </span> |
+                <span>
+                    @Html.ActionLink("Price (L)", "Index",
+                 new
+                 {
+                     loc_Id = ViewBag.Loc_Id,
+                     subCat_Id = ViewBag.SubCat_Id,
+                     viewOrder = "low",
+                     view = ViewBag.View
+                 })
+                </span> |
+                <span>
+                    @Html.ActionLink("Most Recent", "Index",
+                 new
+                 {
+                     loc_Id = ViewBag.Loc_Id,
+                     subCat_Id = ViewBag.SubCat_Id,
+                     viewOrder = "",
+                     view = ViewBag.View
+                 })
+                </span>
+            </h4>
+        </div>
+    </div>
+    <hr/>
+
     @foreach (var item in ViewBag.Posts)
     {
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src=@item.Image.FilePath>
-                <div class="caption">
-                    <h3>@item.Name</h3>
-                    <p>Price: $@item.Price</p>
-                    <p>Location: @item.Location.Locale</p>
+        if (ViewBag.View == "thumb")
+        {
+            <div class="container">
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src=@item.Image.FilePath>
+                        <div class="caption">
+                            <h3>@item.Name</h3>
+                            <p>Price: $@item.Price</p>
+                            <p>Location: @item.Location.Locale</p>
+                            <p>@Html.ActionLink("View Post", "Details", "Post", new { id = item.Id }, new { })</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+            <br />
+        }
+        if (ViewBag.View == "list")
+        {
+            <div class="container">
+                <div class="col-lg-8 col-sm-6 col-md-4">
+                    <span>@item.Name</span> |
+                    <span>Price: $@item.Price</span> |
+                    <span>Location: @item.Location.Locale</span> |
+                    <span>@Html.ActionLink("View Post", "Details", "Post", new { id = item.Id }, new { })</span>
+                </div>
+            </div>
+            <br />
+        }
+        if (ViewBag.View == "gallery")
+        {
+            <div class="container">
+                <div class="col-lg-9">
+                    <div class="thumbnail">
+                        <img class="thumb" src=@item.Image.FilePath>
+                        <div class="caption text-center">
+                            <span>@item.Name</span> |
+                            <span>Price: $@item.Price</span> |
+                            <span>Location: @item.Location.Locale</span> |
+                            <span>@Html.ActionLink("View Post", "Details", "Post", new { id = item.Id }, new { })</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+        }
+
     }
 </div>

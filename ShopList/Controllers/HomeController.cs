@@ -1,4 +1,5 @@
-﻿using ShopList.Models;
+﻿using Microsoft.AspNet.Identity;
+using ShopList.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace ShopList.Controllers
 
         public ActionResult HomeList(int loc_Id)
         {
+            ViewBag.loc_Id = loc_Id;
             var model = new HomeListViewModel
             {
                 Cats = GetCats(),
@@ -26,13 +28,30 @@ namespace ShopList.Controllers
 
         public ActionResult Index()
         {
+            var userId = User.Identity.GetUserId();
+            if (userId == null)
+            {
+                var model = new ChooseLocationViewModel
+                {
+                    Locs = GetLocs()
+                };
+
+                return View(model);
+            }
+            var userInstance = db.Users.Where(u => u.Id == userId).FirstOrDefault();
+            var u_loc_Id = userInstance.PrefLocId;
+            return RedirectToAction("HomeList", "Home", new { loc_Id = u_loc_Id });
+            
+            
+        }
+
+        public ActionResult LocList()
+        {
             var model = new ChooseLocationViewModel
             {
                 Locs = GetLocs()
             };
-
             return View(model);
-            
         }
 
         [HttpPost]
@@ -48,7 +67,7 @@ namespace ShopList.Controllers
             return cats;
         }
 
-        private ICollection<SubCategory> GetSubCats(int cat_Id)
+        private ICollection<SubCategory> GetSubCats()
         {
             var subCats = db.SubCats.ToList();
             return subCats;

@@ -10,6 +10,7 @@
                     <h3>@item.Name</h3>
                     <p>Price: $@item.Price</p>
                     <p>Location: @item.Location.Locale</p>
+                    <p>@Html.ActionLink("View Post", "Details", "Post", new { id = item.Id }, new { })</p>
                 </div>
             </div>
         </div>

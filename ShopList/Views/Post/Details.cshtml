@@ -15,13 +15,13 @@
             @Model.Description
         </h4>
     </div>
-    <p>
+    <div class="col-lg-8 text-center">
         @if (ViewBag.UserId == Model.Owner_Id)
         {
-            @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
+            @Html.ActionLink("Delete Your Post", "Delete", new { id = Model.Id }) 
         }
-        @Html.ActionLink("Back to List", "Index", new { subCat_Id = Model.SubCat_Id , viewOrder = ""})
-    </p> 
+        | @Html.ActionLink("Back", "Index", "SubCat", new { subCat_Id = Model.SubCat_Id , viewOrder = "", loc_Id = Model.Location.Id , view = "thumb"}, new { })
+    </div> 
     
 
 </div>

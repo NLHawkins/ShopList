@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ShopList.Models;
+using System.Collections.Generic;
 
 namespace ShopList.Controllers
 {
@@ -139,7 +140,11 @@ namespace ShopList.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            var model = new RegisterViewModel
+            {
+                Locs = GetLocs()
+            };
+            return View(model);
         }
 
         //
@@ -151,7 +156,7 @@ namespace ShopList.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, PrefLocId = model.PrefLocId };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -421,6 +426,20 @@ namespace ShopList.Controllers
             }
 
             base.Dispose(disposing);
+        }
+        ApplicationDbContext db = new ApplicationDbContext();
+        private IEnumerable<SelectListItem> GetLocs()
+        {
+
+            var locs = db.Locs
+                        .Select(x =>
+                                new SelectListItem
+                                {
+                                    Value = x.Id.ToString(),
+                                    Text = x.Locale
+                                });
+
+            return new SelectList(locs, "Value", "Text");
         }
 
         #region Helpers

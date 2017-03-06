@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
+
 namespace ShopList.Models
 {
     public class ExternalLoginConfirmationViewModel
@@ -66,6 +67,11 @@ namespace ShopList.Models
         [Required]
         [Display(Name = "UserName")]
         public string UserName { get; set; }
+
+        [Required]
+        [Display(Name = "Location")]
+        public int PrefLocId { get; set; }
+        public IEnumerable<System.Web.Mvc.SelectListItem> Locs { get; set; }
 
         [Required]
         [EmailAddress]

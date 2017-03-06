@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using ShopList.Extensions;
 using ShopList.Models;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace ShopList.Controllers
         {
             var post = db.Posts.Where(p => p.Id == id).FirstOrDefault();
             var img = db.Images.Where(i => i.Id == post.Img_Id).FirstOrDefault();
+            ViewBag.UserId = User.Identity.GetUserId();
             ViewBag.FilePath = img.FilePath;
             return View(post);
         }
@@ -24,6 +26,13 @@ namespace ShopList.Controllers
         public ActionResult Index(int loc_id)
         {
             var posts = db.Posts.Where(p => p.Loc_Id == loc_id);
+            ViewBag.Posts = posts.ToList().OrderByDescending(c => c.Created);
+            return View();
+        }
+
+        public ActionResult UserIndex(string id)
+        {
+            var posts = db.Posts.Where(p => p.Owner_Id == id);
             ViewBag.Posts = posts.ToList().OrderByDescending(c => c.Created);
             return View();
         }

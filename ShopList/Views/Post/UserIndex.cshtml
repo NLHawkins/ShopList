@@ -1,0 +1,26 @@
+﻿<br/>
+<br />
+<div class="container">
+    @foreach (var item in ViewBag.Posts)
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <img class="thumb" src="@item.Image.FilePath" />
+                </div>
+                <div class="col-lg-6 text-center">
+                    <h2>
+                        @item.Name - $@item.Price - (@item.Location.Locale)
+                    </h2>
+                    <h4>
+                        @item.Description
+                    </h4>
+                    <h4>
+                        @Html.ActionLink("Delete This Post", "Delete", new { id = item.Id })
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <hr/>
+    }
+</div>

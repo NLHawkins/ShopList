@@ -213,6 +213,7 @@
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\SubCatController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
+    <Compile Include="Extensions\IdentityExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -296,6 +297,14 @@
     <Compile Include="Migrations\201703042002189_Fkanotations.Designer.cs">
       <DependentUpon>201703042002189_Fkanotations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703052321369_chk1.cs" />
+    <Compile Include="Migrations\201703052321369_chk1.Designer.cs">
+      <DependentUpon>201703052321369_chk1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703052337272_chk2.cs" />
+    <Compile Include="Migrations\201703052337272_chk2.Designer.cs">
+      <DependentUpon>201703052337272_chk2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\HomeViewModels.cs" />
@@ -373,6 +382,8 @@
     <Content Include="Views\SubCat\Index.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Home\HomeList.cshtml" />
+    <Content Include="Views\Home\LocList.cshtml" />
+    <Content Include="Views\Post\UserIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -447,6 +458,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703042002189_Fkanotations.resx">
       <DependentUpon>201703042002189_Fkanotations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703052321369_chk1.resx">
+      <DependentUpon>201703052321369_chk1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703052337272_chk2.resx">
+      <DependentUpon>201703052337272_chk2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

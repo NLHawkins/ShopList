@@ -59,5 +59,9 @@ namespace ShopList.Models
         public string File { get; set; }
     }
 
+    public class SubCatViewModel
+    {
+        public IList<Post> Posts { get; set; }
+    }
 
 }

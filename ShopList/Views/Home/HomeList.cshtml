@@ -12,7 +12,7 @@
                     {
                         if (sc.CategoryId == item.Id)
                         {
-                            <p>---@Html.ActionLink(sc.Title, "Index", "SubCat", new { loc_Id = ViewBag.loc_Id, viewOrder = "", subCat_Id = sc.Id }, new { })</p>
+                            <p>---@Html.ActionLink(sc.Title, "Index", "SubCat", new { loc_Id = ViewBag.loc_Id, viewOrder = "", subCat_Id = sc.Id, view = "thumb"}, new { })</p>
                         }
                     }
 
