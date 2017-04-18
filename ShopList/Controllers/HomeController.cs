@@ -21,7 +21,8 @@ namespace ShopList.Controllers
                 Cats = GetCats(),
                 SubCats = GetSubCats()  
             };
-            
+            var loc = db.Locs.Where(x => x.Id == loc_Id).FirstOrDefault();
+            ViewBag.loc_Name = loc.Locale;
             return View(model);
 
         }
@@ -39,6 +40,10 @@ namespace ShopList.Controllers
                 return View(model);
             }
             var userInstance = db.Users.Where(u => u.Id == userId).FirstOrDefault();
+            if (userInstance == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             var u_loc_Id = userInstance.PrefLocId;
             return RedirectToAction("HomeList", "Home", new { loc_Id = u_loc_Id });
             

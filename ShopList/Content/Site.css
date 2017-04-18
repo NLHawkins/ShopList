@@ -30,3 +30,7 @@ textarea {
     font-style: italic;
     font-size: 80%;
 }
+
+#cat_thumbs {
+    padding-top: 25px;
+}

@@ -2,6 +2,7 @@
 
 <br/>
 <div class="container">
+
     <div class="row">
         <div class="col-lg-2 text-center">
             <h4>Views:</h4>
@@ -84,8 +85,7 @@
     {
         if (ViewBag.View == "thumb")
         {
-            <div class="container">
-                <div class="col-sm-6 col-md-4">
+                <div class="col-sm-12 col-md-4 col-lg-4" id="cat_thumbs">
                     <div class="thumbnail">
                         <img src=@item.Image.FilePath>
                         <div class="caption">
@@ -96,8 +96,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <br />
         }
         if (ViewBag.View == "list")
         {

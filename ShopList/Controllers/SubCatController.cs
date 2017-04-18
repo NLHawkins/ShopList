@@ -14,17 +14,26 @@ namespace ShopList.Controllers
         public ActionResult Index(int loc_Id, int subCat_Id, string viewOrder, string view)
         {
             ViewBag.Loc_Id = loc_Id;
+            var loc = db.Locs.SingleOrDefault(l => l.Id == loc_Id);
+            ViewBag.locale = loc.Locale;
+
             ViewBag.SubCat_Id = subCat_Id;
+            var subCat = db.SubCats.SingleOrDefault(s => s.Id == subCat_Id);
+            ViewBag.sub = subCat.Title;
+
             ViewBag.View = view;
             var posts = db.Posts.Where(p => p.SubCat_Id == subCat_Id && p.Loc_Id == loc_Id);
+
             if (viewOrder == "high")
             {
                 ViewBag.Posts = posts.ToList().OrderByDescending(p => p.Price);
             }
+
             else if (viewOrder == "low")
             {
                 ViewBag.Posts = posts.ToList().OrderBy(p => p.Price);
             }
+
             else
             {
                 ViewBag.Posts = posts.ToList().OrderByDescending(c => c.Created);
