@@ -1,36 +1,69 @@
-# URL Shortener
+# ShopList
 
-### Goal
+### Objective
+  #### To build a Craigslist clone utilizing knowledge of front-end layouts, complex model structuring, image uploads, and pagination.
 
-To Create and MVC project allowing a user to bookmark a site and obscure the URL through a shortened link. Users will also have the ability to view, share, and rate other user bookmarks.
-
-### Objectives
-
-* Make use of Bootstrap and hand-written CSS to style the application
-* Redirect users away from the site while tracking their site usage
-* Use MVC's default authentication views, viewmodels, and controllers
-* Learn to display certain features to some users but not to others
+ ### Features
+* #### User Authentication extended to include preferred location
 
 
-### Features
-*The Home Index serves a a landing page and allows a user (logged-in or anonymous) to view all publicly available bookmarks. Authentication is required to create a new or favorite an existing bookmark.*
+* #### Dynamically populated category, subcategory, and location lists and dropdown menus
 
-![](https://github.com/NLHawkins/ShopList/blob/master/ShopList/Uploads/URLPort1.png)
 
-*Tables are used to quickly browse a specific users bookmarks.*
-
-![](https://github.com/NLHawkins/ShopList/blob/master/ShopList/Uploads/URLPort2.png)
-
-*A custom route configuration is used to meter link-use as well as to redirect user to the actual URL.* 
-
-        [Route("b/{hashlink}")]
-        public ActionResult Details(string hashlink, bool? dropClick)
+```csharp   
+    public class ChooseLocationViewModel
+    {
+        public int? SelectedLocId { get; set; }
+        public IEnumerable<SelectListItem> Locs { get; set; }
+    }
+```
+```csharp
+        private IEnumerable<SelectListItem> GetLocs()
         {
-            ...
-            return Redirect($"http://{bookMark.URL}");
+            var locs = db.Locs
+                        .Select(x =>
+                                new SelectListItem
+                                {
+                                    Value = x.Id.ToString(),
+                                    Text = x.Locale
+                                });
+            return new SelectList(locs, "Value", "Text");
         }
+```
+```csharp
+        public ActionResult LocList()
+        {
+            var model = new ChooseLocationViewModel
+            {
+                Locs = GetLocs()
+            };
+            return View(model);
+        }
+```
+![](https://cdn.rawgit.com/NLHawkins/ShopList/3bed9521/ShopList/Uploads/a.png)
+* #### Image Uploads
 
+![](https://cdn.rawgit.com/NLHawkins/ShopList/3bed9521/ShopList/Uploads/q.png)
+ 
+* #### Items may be filtered by price and date listed, and displayed through list, thumbnail, and gallery views.
 
-
-
-##### This project was built during Week 6 of the immersive back-end engineering course at The Iron Yard, Greenville, SC.
+![](https://cdn.rawgit.com/NLHawkins/ShopList/3bed9521/ShopList/Uploads/zxcv.png)
+    
+```csharp
+    public ActionResult Index(int loc_Id, int subCat_Id, string viewOrder, string view)
+    {
+        ...
+        // view option ("thumb","list", etc) passed to frontend through viewbag
+        ViewBag.View = view;
+        
+        var posts = db.Posts.Where(p => p.SubCat_Id == subCat_Id && p.Loc_Id == loc_Id);
+        
+        //order logic processed here 
+        if (viewOrder == "high")
+            {
+                ViewBag.Posts = posts.ToList().OrderByDescending(p => p.Price);
+            }
+        else if...
+    }
+```
+*ShopList was built during Week 8 of The Iron Yard's 12-Week immersive web development course*
