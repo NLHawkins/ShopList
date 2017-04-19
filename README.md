@@ -40,14 +40,14 @@
             return View(model);
         }
 ```
-![](https://cdn.rawgit.com/NLHawkins/ShopList/3bed9521/ShopList/Uploads/a.png)
+  ![](https://cdn.rawgit.com/NLHawkins/ShopList/3bed9521/ShopList/Uploads/a.png)
 * #### Image Uploads
 
-![](https://cdn.rawgit.com/NLHawkins/ShopList/3bed9521/ShopList/Uploads/q.png)
+    ![](https://cdn.rawgit.com/NLHawkins/ShopList/3bed9521/ShopList/Uploads/q.png)
  
 * #### Items may be filtered by price and date listed, and displayed through list, thumbnail, and gallery views.
 
-![](https://cdn.rawgit.com/NLHawkins/ShopList/3bed9521/ShopList/Uploads/zxcv.png)
+    ![](https://cdn.rawgit.com/NLHawkins/ShopList/3bed9521/ShopList/Uploads/zxcv.png)
     
 ```csharp
     public ActionResult Index(int loc_Id, int subCat_Id, string viewOrder, string view)
