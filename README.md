@@ -1,13 +1,13 @@
 # ShopList
 
 ### Objective
-  #### To build a Craigslist clone utilizing knowledge of front-end layouts, complex model structuring, image uploads, and pagination.
+To build a Craigslist clone utilizing knowledge of front-end layouts, complex model structuring, image uploads, and pagination.
+------
+### Features
+* ##### User Authentication extended to include preferred location
+------
 
- ### Features
-* #### User Authentication extended to include preferred location
-
-
-* #### Dynamically populated category, subcategory, and location lists and dropdown menus
+* ##### Dynamically populated category, subcategory, and location lists and dropdown menus
 
 
 ```csharp   
@@ -40,12 +40,13 @@
             return View(model);
         }
 ```
-  ![](https://cdn.rawgit.com/NLHawkins/ShopList/3bed9521/ShopList/Uploads/a.png)
-* #### Image Uploads
+![](https://cdn.rawgit.com/NLHawkins/ShopList/3bed9521/ShopList/Uploads/a.png)
+-------
+* ##### Image Uploads
 
     ![](https://cdn.rawgit.com/NLHawkins/ShopList/3bed9521/ShopList/Uploads/q.png)
- 
-* #### Items may be filtered by price and date listed, and displayed through list, thumbnail, and gallery views.
+-------
+* ##### Items may be filtered by price and date listed, and displayed through list, thumbnail, and gallery views.
 
     ![](https://cdn.rawgit.com/NLHawkins/ShopList/3bed9521/ShopList/Uploads/zxcv.png)
     
@@ -66,4 +67,5 @@
         else if...
     }
 ```
+------
 *ShopList was built during Week 8 of The Iron Yard's 12-Week immersive web development course*
