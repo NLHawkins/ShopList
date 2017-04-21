@@ -68,4 +68,4 @@ To build a Craigslist clone utilizing knowledge of front-end layouts, complex mo
     }
 ```
 ------
-*ShopList was built during Week 8 of The Iron Yard's 12-Week immersive web development course*
+#####ShopList was built during Week 8 of The Iron Yard's 12-Week immersive web development course
